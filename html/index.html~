@@ -1,0 +1,86 @@
+<html>
+  <head>
+    <title>The Sykes Household Webserver</title>
+  <STYLE>
+    
+table, tr, th{
+	color= #222222;
+	text-align=center;
+}
+table#videos {
+	border-spacing: 15;
+	width: 100%;
+        background-color: hsl(0, 50%, 95%);
+        spacing: 28px;
+}
+
+body {
+margin: 5px;
+color: #000022;
+background-color: hsl(120, 75%, 975%);
+font-family: "Times New Roman", Times, serif;
+font-size: large;
+border: 4px solid black
+link-visited: #FFFFFF;
+}
+0
+  </STYLE>
+	
+</head>
+<body>
+	<center><h3>Sykes Webserver</h3>
+	<br>
+	<br>
+	<a href = "./codingMath.html">Playing with Javascript Animations</a>
+	<a href = "./summer2016.html">My Summer 2016 tenative schedule....</a>
+	<a href = "./haskellNotes.html">Notes from "Making Games in Haskell Talk</a>
+	<a href = "./4TBdrive/">Server Hard Drive (where the movies are stored)</a>
+	<br>
+	<br>
+	    <table id="PolSci">
+	        <tr>
+	            <td>
+            	    <a href = "./AmerGov-0613-notes.html"> PolSci Notes</a>
+            	<td>
+            	    <a href = "./AmerGov-0613-notes.html"> 06-13-2016</a>
+      </table>
+	<br>
+	<br>
+		<script>
+			var todayDate = new Date();
+
+			document.writeln("<font color = #000000>", todayDate)
+			newDay = todayDate.getday();
+			document.writeln("Today is: " + WeekDayTxt(newDay));
+
+		</script>
+		<br>
+		<br>
+
+	<TABLE id="videos" ALIGN="left" BORDER=0 CELLSPACING=0 CELLPADDING=0 WIDTH="600px">
+	<TR VALIGN="middle">
+		<TH><center>Owen's Easy access videos!!</center></TH>
+	</TR>
+	<TR ALIGN="center" VALIGN="middle">
+		<TD>
+			<iframe
+				width="853" height="480"
+				src="https://www.youtube.com/embed/92llYy9R-Ow"
+				frameborder="3" allowfullscreen>
+			</iframe>
+		</TD>
+	</TR>
+	<TR ALIGN="center">
+		<TD>
+			<iframe
+				width="853" height="480"
+				src="https://www.youtube.com/embed/m1Ba8ae9dV8"
+				frameborder="3" allowfullscreen>
+			</iframe>
+		</TD>
+	</TR>
+	</TABLE>
+	<table>
+</center>
+</body>
+</html>

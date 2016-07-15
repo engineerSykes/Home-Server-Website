@@ -1,0 +1,282 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+               "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<title>Haskell Notes</title>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
+<meta name="title" content="Haskell Notes"/>
+<meta name="generator" content="Org-mode"/>
+<meta name="generated" content="2016-07-11T14:47-0700"/>
+<meta name="author" content="chris"/>
+<meta name="description" content=""/>
+<meta name="keywords" content=""/>
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  html { font-family: Times, serif; font-size: 12pt; }
+  .title  { text-align: center; }
+  .todo   { color: red; }
+  .done   { color: green; }
+  .tag    { background-color: #add8e6; font-weight:normal }
+  .target { }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .right  {margin-left:auto; margin-right:0px;  text-align:right;}
+  .left   {margin-left:0px;  margin-right:auto; text-align:left;}
+  .center {margin-left:auto; margin-right:auto; text-align:center;}
+  p.verse { margin-left: 3% }
+  pre {
+	border: 1pt solid #AEBDCC;
+	background-color: #F3F5F7;
+	padding: 5pt;
+	font-family: courier, monospace;
+        font-size: 90%;
+        overflow:auto;
+  }
+  table { border-collapse: collapse; }
+  td, th { vertical-align: top;  }
+  th.right  { text-align:center;  }
+  th.left   { text-align:center;   }
+  th.center { text-align:center; }
+  td.right  { text-align:right;  }
+  td.left   { text-align:left;   }
+  td.center { text-align:center; }
+  dt { font-weight: bold; }
+  div.figure { padding: 0.5em; }
+  div.figure p { text-align: center; }
+  div.inlinetask {
+    padding:10px;
+    border:2px solid gray;
+    margin:10px;
+    background: #ffffcc;
+  }
+  textarea { overflow-x: auto; }
+  .linenr { font-size:smaller }
+  .code-highlighted {background-color:#ffff00;}
+  .org-info-js_info-navigation { border-style:none; }
+  #org-info-js_console-label { font-size:10px; font-weight:bold;
+                               white-space:nowrap; }
+  .org-info-js_search-highlight {background-color:#ffff00; color:#000000;
+                                 font-weight:bold; }
+  /*]]>*/-->
+</style>
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2013 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+
+</head>
+<body>
+
+<div id="preamble">
+
+</div>
+
+<div id="content">
+<h1 class="title">Haskell Notes</h1>
+
+
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#sec-1">1 Robot Finds Kitten for a "Haskell Problem" to solve</a></li>
+<li><a href="#sec-2">2 Fuctional Reactive Programming for games and "state" functionality</a>
+<ul>
+<li><a href="#sec-2-1">2.1 Elerea = High Order, FRP framework. Suggested by Elise Houard in StrangLoop talk</a></li>
+<li><a href="#sec-2-2">2.2 FRP uses "Signals" for altering state such as movement and levels in games</a></li>
+<li><a href="#sec-2-3">2.3 Signal Generator inside Signal generator for Levels Base</a></li>
+<li><a href="#sec-2-4">2.4 within OpenGl Textures are projected onto game</a></li>
+<li><a href="#sec-2-5">2.5 Sounds use OpenAL</a></li>
+</ul>
+</li>
+<li><a href="#sec-3">3 KeyFrame Animations for complex Skeleton animations</a>
+<ul>
+<li><a href="#sec-3-1">3.1 Blender is free and good for keyframe animation</a></li>
+</ul>
+</li>
+<li><a href="#sec-4">4 Physics for things that move, rotate bounce, fall, fly etc&hellip;</a>
+<ul>
+<li><a href="#sec-4-1">4.1 Friction, elasticity, gravity, joints, etc&hellip;</a></li>
+<li><a href="#sec-4-2">4.2 Physics combined with FRP = Hard</a></li>
+</ul>
+</li>
+<li><a href="#sec-5">5 Wayward tides &ndash; Company looking for Haskell developers ffor games</a></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-1" class="outline-2">
+<h2 id="sec-1"><span class="section-number-2">1</span> Robot Finds Kitten for a "Haskell Problem" to solve</h2>
+<div class="outline-text-2" id="text-1">
+
+
+</div>
+
+</div>
+
+<div id="outline-container-2" class="outline-2">
+<h2 id="sec-2"><span class="section-number-2">2</span> Fuctional Reactive Programming for games and "state" functionality</h2>
+<div class="outline-text-2" id="text-2">
+
+
+</div>
+
+<div id="outline-container-2-1" class="outline-3">
+<h3 id="sec-2-1"><span class="section-number-3">2.1</span> Elerea = High Order, FRP framework. Suggested by Elise Houard in StrangLoop talk</h3>
+<div class="outline-text-3" id="text-2-1">
+
+</div>
+
+</div>
+
+<div id="outline-container-2-2" class="outline-3">
+<h3 id="sec-2-2"><span class="section-number-3">2.2</span> FRP uses "Signals" for altering state such as movement and levels in games</h3>
+<div class="outline-text-3" id="text-2-2">
+
+</div>
+
+</div>
+
+<div id="outline-container-2-3" class="outline-3">
+<h3 id="sec-2-3"><span class="section-number-3">2.3</span> Signal Generator inside Signal generator for Levels Base</h3>
+<div class="outline-text-3" id="text-2-3">
+
+<p>   The LevelCount-&gt;level houses the main Game signals
+</p></div>
+
+</div>
+
+<div id="outline-container-2-4" class="outline-3">
+<h3 id="sec-2-4"><span class="section-number-3">2.4</span> within OpenGl Textures are projected onto game</h3>
+<div class="outline-text-3" id="text-2-4">
+
+<ul>
+<li>Vertex Coordinates (Y bottom to top, x from left to right) arrange how
+      texture is projected
+</li>
+<li>Texture Coordinates (V bottom to top, U left to right) arrange how texture
+      is applied to "object"
+</li>
+</ul>
+
+</div>
+
+</div>
+
+<div id="outline-container-2-5" class="outline-3">
+<h3 id="sec-2-5"><span class="section-number-3">2.5</span> Sounds use OpenAL</h3>
+<div class="outline-text-3" id="text-2-5">
+
+</div>
+</div>
+
+</div>
+
+<div id="outline-container-3" class="outline-2">
+<h2 id="sec-3"><span class="section-number-2">3</span> KeyFrame Animations for complex Skeleton animations</h2>
+<div class="outline-text-2" id="text-3">
+
+
+</div>
+
+<div id="outline-container-3-1" class="outline-3">
+<h3 id="sec-3-1"><span class="section-number-3">3.1</span> Blender is free and good for keyframe animation</h3>
+<div class="outline-text-3" id="text-3-1">
+
+</div>
+</div>
+
+</div>
+
+<div id="outline-container-4" class="outline-2">
+<h2 id="sec-4"><span class="section-number-2">4</span> Physics for things that move, rotate bounce, fall, fly etc&hellip;</h2>
+<div class="outline-text-2" id="text-4">
+
+
+</div>
+
+<div id="outline-container-4-1" class="outline-3">
+<h3 id="sec-4-1"><span class="section-number-3">4.1</span> Friction, elasticity, gravity, joints, etc&hellip;</h3>
+<div class="outline-text-3" id="text-4-1">
+
+</div>
+
+</div>
+
+<div id="outline-container-4-2" class="outline-3">
+<h3 id="sec-4-2"><span class="section-number-3">4.2</span> Physics combined with FRP = Hard</h3>
+<div class="outline-text-3" id="text-4-2">
+
+
+</div>
+</div>
+
+</div>
+
+<div id="outline-container-5" class="outline-2">
+<h2 id="sec-5"><span class="section-number-2">5</span> Wayward tides &ndash; Company looking for Haskell developers ffor games</h2>
+<div class="outline-text-2" id="text-5">
+
+<ul>
+<li><a href="http://blog.chucklefish.org/?p=154">WayWard Tides</a>
+</li>
+<li><a href="http://leanpub.com/gameinhaskell">Game Programming in Haskell by Elise Huard</a>
+</li>
+</ul>
+
+</div>
+</div>
+</div>
+
+<div id="postamble">
+<p class="date">Date: 2016-07-11T14:47-0700</p>
+<p class="author">Author: chris</p>
+<p class="creator"><a href="http://orgmode.org">Org</a> version 7.9.3f with <a href="http://www.gnu.org/software/emacs/">Emacs</a> version 24</p>
+<a href="http://validator.w3.org/check?uri=referer">Validate XHTML 1.0</a>
+
+</div>
+</body>
+</html>

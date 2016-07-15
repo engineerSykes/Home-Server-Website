@@ -1,0 +1,28 @@
+html, body  {
+  margin:             0px;
+  background:        #ddd;
+  color:             #9b9;
+}
+canvas {
+  width:                   600px;
+  display:                 block;
+  background:               #000;
+  margin-top:               30px;
+  margin-left:              auto;
+  margin-right:             auto;
+  border:        white 4px solid;
+  box-shadow:  #547 0px 0px 20px;
+}
+
+div#box-element {
+    margin:      0px auto;
+}
+
+div > .shadow {
+  height:            18px;
+  background:        #668;
+  border-radius:     100%;
+  margin-top:        20px;
+  margin-left:       10px;
+  margin-right:      10px;
+}
